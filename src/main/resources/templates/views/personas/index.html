@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header">
+</header>
+
+<!-- Contenido -->
+<div class="container">
+<div class="row">
+<div class="col-lg-2">
+</div>
+<div class="col-lg-8">
+<h1 th:text="${titulo}" class="h1 text-primary text-center my-4"></h1 >
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-2">
+</div>
+<div class="col-lg-8">
+<table class="table table-primary my-4">
+<thead>
+<tr>
+<th>#</th>
+<th>DNI</th>
+<th>Nombre</th>
+<th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="persona:${personas}">
+<td th:text="${persona.id}"></td  >
+<td th:text="${persona.dni}"></td >
+<td th:text="${persona.nombre}"></td >
+<td>
+<a class="btn btn-info">  Mostrar   <i class="bi bi-eye"></i></a>
+<a class="btn btn-warning">Editar   <i class="bi bi-pencil-square"></i></a>
+<a class="btn btn-danger"> Eliminar   <i class="bi bi-eraser"></i></a>
+</td>
+</tr >	
+</tbody>
+</table >
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
+
+<footer th:replace="plantilla/template :: footer">
+</footer>
+</body>
+</html>
