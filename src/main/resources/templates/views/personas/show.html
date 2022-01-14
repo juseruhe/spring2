@@ -11,8 +11,8 @@
 <div class="row">
 <div class="col-lg-2">
 </div>
-<div class="col-lg-8">
-<h1 th:text="${titulo}" class="h1 text-primary text-center my-4"></h1 >
+<div class="col-lg-8 text-center my-4">
+<h1 th:text="${titulo}" class="h1 text-primary"></h1 > <h1 th:text="${persona.nombre}" class="h1 text-primary"></h1 > 
 </div>
 <div class="col-lg-2"></div>
 </div>
@@ -23,30 +23,28 @@
 <div class="col-lg-2">
 </div>
 <div class="col-lg-8">
-<a class="btn btn-success my-4" th:href="@{/personas/crear}">Insertar Persona  <i class="bi bi-plus-circle"> </i>  </a>
+
 <table class="table border border-white my-4">
 <thead>
 <tr>
 <th class="bg-primary text-white border border-white">#</th >
 <th class="bg-primary text-white border border-white">DNI</th >
 <th class="bg-primary text-white border border-white">Nombre</th >
-<th class="bg-primary text-white border border-white">Acciones</th >
+
 </tr>
 </thead>
 <tbody>
-<tr  th:each="persona:${personas}">
+<tr>
 <td class="bg-primary text-white border border-white" th:text="${persona.id}"></td   >
 <td class="bg-primary text-white border border-white" th:text="${persona.dni}"></td  >
 <td class="bg-primary text-white border border-white" th:text="${persona.nombre}"></td  >
-<td class="bg-primary text-white border border-white">
-<a th:href="@{/personas/}+${persona.id}" class="btn btn-info">  Mostrar   <i class="bi bi-eye"></i></a >
-<a th:href="@{/personas/edit/}+${persona.id}" class="btn btn-warning">Editar   <i class="bi bi-pencil-square"></i></a >
-<a th:href="@{/personas/delete/}+${persona.id}" class="btn btn-danger"> Eliminar   <i class="bi bi-eraser"></i></a >
-</td >
-</tr  >	
+
+</tr   >	
 </tbody>
 </table >
 </div>
+
+<a th:href="@{/personas/}" class="btn btn-secondary"><i class="bi bi-arrow-left"> </i>   Volver</a>
 <div class="col-lg-2"></div>
 </div>
 </div>

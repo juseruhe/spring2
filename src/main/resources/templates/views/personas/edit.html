@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header">
+</header>
+
+<!-- Contenido -->
+<div class="container">
+<div class="row">
+<div class="col-lg-2">
+</div>
+<div class="col-lg-8 text-center my-4">
+<h1 class="h1 text-primary" th:text="${titulo}"></h1 ><h1 th:text="${persona.nombre}" class="h1 text-primary"></h1 >
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-2">
+</div>
+<div class="col-lg-8">
+
+ <form th:action="@{/personas/update}"  th:object="${persona}" method="POST">
+ 
+  <input type="hidden" required class="form-control" th:field="*{id}" id="id" placeholder="Escribe el DNI: ejemplo 108045698">
+    <div class="input-group my-4">
+    <label class="input-group-text bg-primary text-white" for="dni"> DNI : </label>
+    <input type="number" required class="form-control" th:field="*{dni}" id="dni" placeholder="Escribe el DNI: ejemplo 108045698">
+    </div>
+    
+      <div class="input-group my-4">
+    <label class="input-group-text bg-primary text-white" for="nombre"> Nombre : </label>
+    <input type="text" required class="form-control" th:field="*{nombre}" id="nombre" placeholder="Escribe el nombre: Juan García">
+    </div>
+    
+     <div class="input-group">
+    <a class="btn btn-secondary form-control mx-2" th:href="@{/personas/}"> <i class="bi bi-arrow-left"></i>  Volver </a>
+    <button type="submit" class="btn btn-success mx-2 form-control">Aceptar <i class="bi bi-check-circle"></i></button>
+    </div>
+    
+    </form >
+  
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
+
+<footer th:replace="plantilla/template :: footer">
+</footer>
+</body>
+</html>
