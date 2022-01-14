@@ -24,6 +24,7 @@
 </div>
 <div class="col-lg-8">
 <a class="btn btn-success my-4" th:href="@{/personas/crear}">Insertar Persona  <i class="bi bi-plus-circle"> </i>  </a>
+<a target="_blank" class="btn btn-success my-4 descarga-pdf" th:href="@{/personas/?format=pdf}">Descargar PDF Personas  <i class="bi bi-file-pdf"> </i>  </a >
 <table class="table border border-white my-4">
 <thead>
 <tr>
@@ -39,8 +40,8 @@
 <td class="bg-primary text-white border border-white" th:text="${persona.dni}"></td  >
 <td class="bg-primary text-white border border-white" th:text="${persona.nombre}"></td  >
 <td class="bg-primary text-white border border-white">
-<a th:href="@{/personas/}+${persona.id}" class="btn btn-info">  Mostrar   <i class="bi bi-eye"></i></a >
-<a th:href="@{/personas/edit/}+${persona.id}" class="btn btn-warning">Editar   <i class="bi bi-pencil-square"></i></a >
+<a th:href="@{/personas/}+${persona.id}" class="btn btn-info mostrar">  Mostrar   <i class="bi bi-eye"></i></a >
+<a th:href="@{/personas/edit/}+${persona.id}" class="btn btn-warning editar">Editar   <i class="bi bi-pencil-square"></i></a >
 <a th:href="@{/personas/delete/}+${persona.id}" class="btn btn-danger"> Eliminar   <i class="bi bi-eraser"></i></a >
 </td >
 </tr  >	

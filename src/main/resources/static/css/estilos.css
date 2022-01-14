@@ -1,0 +1,48 @@
+.bi-file-pdf {
+	color:rgb(226, 16, 5);
+	
+}
+
+/* Editar Listar Personas */
+.editar:hover{
+	background: #0F296F;
+	color: white;
+	width:30%;
+	height:30%;
+}
+
+.editar:focus{
+	background: #010612;
+	color: white;
+	width:30%;
+	height:30%;
+}
+
+/* Mostrar Listar Personas */
+.bi-eye{
+	color: rgb(254, 254, 254);
+}
+
+.mostrar:hover{
+	background: #0F296F;
+	color: white;
+	width:30%;
+	height:30%;
+}
+
+.mostrar:focus{
+	background: #010612;
+	color: white;
+	width:30%;
+	height:30%;
+}
+
+.bi-plus-circle{
+	color:#9A9695;
+}
+
+
+body{
+	font-family: didot;
+	
+}
