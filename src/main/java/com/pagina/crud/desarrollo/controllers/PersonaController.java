@@ -1,7 +1,15 @@
 package com.pagina.crud.desarrollo.controllers;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.poi.sl.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pagina.crud.desarrollo.models.entity.Persona;
 import com.pagina.crud.desarrollo.models.service.IPersonaService;
@@ -73,6 +83,31 @@ public class PersonaController {
 		 personaService.eliminar(id);
 	  
 		return "redirect:/personas/";
+	}
+	
+	@PostMapping("/importar")
+	public String importar(@RequestParam("archivo") MultipartFile files,@ModelAttribute Persona persona,Model model) throws IOException {
+
+		XSSFWorkbook workbook = new XSSFWorkbook(files.getInputStream());
+        XSSFSheet worksheet = workbook.getSheetAt(0);
+        
+
+        for (int index = 0; index < worksheet.getPhysicalNumberOfRows(); index++) {
+            if (index > 0) {
+               
+
+                XSSFRow row = worksheet.getRow(index);
+             
+                persona.setDni(String.valueOf(row.getCell(0).getNumericCellValue()));
+                persona.setNombre(row.getCell(1).getStringCellValue());
+                
+                personaService.guardar(persona);
+                
+            }
+        }
+
+		model.addAttribute("mensaje","Datos de Importación de Personas Hechas");
+		return "/views/personas/import";
 	}
 	
 	
