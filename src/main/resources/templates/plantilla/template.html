@@ -48,16 +48,15 @@
 	</header>
 
 	<!--  Mensajes -->
-	<div th:fragment="mensajeExitoso"
-		th:if="${mensaje}"  
-		class="alert alert-success" role="alert">
-		Datos de Importación de Personas Hechas
-		<button type="button" class="close" data-dismiss="alert"
-			aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
+	<div th:if="${mensaje}">
+		<div th:fragment="mensajeExitoso" class="alert alert-success"
+			role="alert">
+			<i class="bi bi-check-circle"></i> Datos de Importación de Personas
+			Hechas
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
 	</div>
-
 
 
 	<!-- Footer-->
@@ -67,6 +66,12 @@
 				Ruiz &copy; 2021</p>
 		</div>
 	</footer>
+
+	<!-- JQuery -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
 
 	<!-- Bundle JS -->
 	<script

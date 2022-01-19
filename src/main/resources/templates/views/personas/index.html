@@ -3,64 +3,79 @@
 <head th:replace="plantilla/template :: head">
 </head>
 <body>
-<header th:replace="plantilla/template :: header">
-</header>
+	<header th:replace="plantilla/template :: header"> </header>
 
-<!-- Contenido -->
-<div class="container">
-<div class="row">
-<div class="col-lg-2">
-</div>
-<div class="col-lg-8">
-<h1 th:text="${titulo}" class="h1 text-primary text-center my-4"></h1 >
-</div>
-<div class="col-lg-2"></div>
-</div>
-</div>
+	<!-- Contenido -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+			     <div th:replace="plantilla/template :: mensajeExitoso"></div>
+				<h1 th:text="${titulo}" class="h1 text-primary text-center my-4"></h1>
+			</div>
+			<div class="col-lg-2"></div>
+		</div>
+	</div>
 
-<div class="container">
-<div class="row">
-<div class="col-lg-2">
-</div>
-<div class="col-lg-8">
-<div th:replace="plantilla/template :: mensajeExitoso" ></div>
-<a class="btn btn-primary my-4 " th:href="@{/personas/crear}">Insertar Persona  <i class="bi bi-plus-circle"> </i>  </a>
-<a target="_blank" class="btn btn-danger my-4 rojo" th:href="@{/personas/?format=pdf}">Descargar Personas PDF <i class="bi bi-file-pdf"> </i>  </a >
-<a  class="btn btn-success my-4 verde" th:href="@{/personas/?format=xlsx}">Descargar Personas Excel  <i class="bi  bi-file-excel"> </i>  </a >
-<form th:action="@{/personas/importar/}" method="post" enctype="multipart/form-data" >
-<div class="input-group">
-<input type="file" name="archivo" id="archivo" class="btn btn-success form-control verde " required>
-<button type="submit" class="btn btn-success mx-4 verde" >Importar Personas EXCEL   <i class="bi bi-arrow-up-circle"></i> <i class="bi bi-file-excel"> </i></button>
-</div>
-</form>
-<table class="table table-responsive table-striped border border-white my-4">
-<thead>
-<tr>
-<th class="bg-primary text-white border border-white">#</th >
-<th class="bg-primary text-white border border-white">DNI</th >
-<th class="bg-primary text-white border border-white">Nombre</th >
-<th class="bg-primary text-white border border-white">Acciones</th >
-</tr>
-</thead>
-<tbody>
-<tr  th:each="persona:${personas}">
-<td class="bg-primary text-white border border-white" th:text="${persona.id}"></td   >
-<td class="bg-primary text-white border border-white" th:text="${persona.dni}"></td  >
-<td class="bg-primary text-white border border-white" th:text="${persona.nombre}"></td  >
-<td class="bg-primary text-white border border-white">
-<a th:href="@{/personas/}+${persona.id}" class="btn btn-info mostrar">  Mostrar   <i class="bi bi-eye"></i></a >
-<a th:href="@{/personas/edit/}+${persona.id}" class="btn btn-warning editar">Editar   <i class="bi bi-pencil-square"></i></a >
-<a th:href="@{/personas/delete/}+${persona.id}" class="btn btn-danger eliminar"> Eliminar   <i class="bi bi-eraser"></i></a >
-</td >
-</tr  >	
-</tbody>
-</table >
-</div>
-<div class="col-lg-2"></div>
-</div>
-</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				<a class="btn btn-primary my-4 " th:href="@{/personas/crear}">Insertar
+					Persona <i class="bi bi-plus-circle"> </i>
+				</a> <a target="_blank" class="btn btn-danger my-4 rojo"
+					th:href="@{/personas/?format=pdf}">Descargar Personas PDF <i
+					class="bi bi-file-pdf"> </i>
+				</a> <a class="btn btn-success my-4 verde"
+					th:href="@{/personas/?format=xlsx}">Descargar Personas Excel <i
+					class="bi  bi-file-excel"> </i>
+				</a>
+				<form th:action="@{/personas/importar/}" method="post"
+					enctype="multipart/form-data">
+					<div class="input-group">
+						<input type="file" name="archivo" id="archivo"
+							class="btn btn-success form-control verde " required>
+						<button type="submit" class="btn btn-success mx-4 verde">
+							Importar Personas EXCEL <i class="bi bi-arrow-up-circle"></i> <i
+								class="bi bi-file-excel"> </i>
+						</button>
+					</div>
+				</form>
+				<table
+					class="table table-responsive table-striped border border-white my-4">
+					<thead>
+						<tr>
+							<th class="bg-primary text-white border border-white">#</th>
+							<th class="bg-primary text-white border border-white">DNI</th>
+							<th class="bg-primary text-white border border-white">Nombre</th>
+							<th class="bg-primary text-white border border-white">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="persona:${personas}">
+							<td class="bg-primary text-white border border-white"
+								th:text="${persona.id}"></td>
+							<td class="bg-primary text-white border border-white"
+								th:text="${persona.dni}"></td>
+							<td class="bg-primary text-white border border-white"
+								th:text="${persona.nombre}"></td>
+							<td class="bg-primary text-white border border-white"><a
+								th:href="@{/personas/}+${persona.id}"
+								class="btn btn-info mostrar"> Mostrar <i class="bi bi-eye"></i></a>
+								<a th:href="@{/personas/edit/}+${persona.id}"
+								class="btn btn-warning editar">Editar <i
+									class="bi bi-pencil-square"></i></a> <a
+								th:href="@{/personas/delete/}+${persona.id}"
+								class="btn btn-danger eliminar"> Eliminar <i
+									class="bi bi-eraser"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-lg-2"></div>
+		</div>
+	</div>
 
-<footer th:replace="plantilla/template :: footer">
-</footer>
+	<footer th:replace="plantilla/template :: footer"> </footer>
 </body>
 </html>

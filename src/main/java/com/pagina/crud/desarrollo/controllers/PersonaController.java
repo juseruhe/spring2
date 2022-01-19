@@ -100,7 +100,7 @@ public class PersonaController {
 
                 XSSFRow row = worksheet.getRow(index);
              
-                persona.setDni(String.valueOf(row.getCell(0).getNumericCellValue()));
+                persona.setDni(String.valueOf(Math.round(row.getCell(0).getNumericCellValue())));
                 persona.setNombre(row.getCell(1).getStringCellValue());
                 
                 personaService.guardar(persona);
@@ -109,7 +109,7 @@ public class PersonaController {
         }
 
 		
-		model.addAttribute("mensaje","Datos de Importación de Personas Hechas "+personaLista);
+		model.addAttribute("mensaje","Datos de Importación de Personas Hechas");
 		return "redirect:/personas/";
 	}
 	
