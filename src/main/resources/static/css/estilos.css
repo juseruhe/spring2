@@ -1,7 +1,6 @@
-.bi-file-pdf {
-	color:rgb(226, 16, 5);
-	
-}
+
+
+
 
 /* Editar Listar Personas */
 .editar:hover{
@@ -37,9 +36,14 @@
 	height:30%;
 }
 
-.bi-plus-circle{
-	color:#9A9695;
+.eliminar:hover{
+	background: #6c1500;
+	color: white;
+	width:30%;
+	height:30%;
 }
+
+
 
 
 body{

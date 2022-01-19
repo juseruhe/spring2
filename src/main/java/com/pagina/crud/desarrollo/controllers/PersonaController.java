@@ -86,15 +86,17 @@ public class PersonaController {
 	}
 	
 	@PostMapping("/importar")
-	public String importar(@RequestParam("archivo") MultipartFile files,@ModelAttribute Persona persona,Model model) throws IOException {
-
+	public String importar(@RequestParam("archivo") MultipartFile files,Model model) throws IOException {
+		 List<Persona> personaLista = new ArrayList<>();
+		
 		XSSFWorkbook workbook = new XSSFWorkbook(files.getInputStream());
         XSSFSheet worksheet = workbook.getSheetAt(0);
         
 
         for (int index = 0; index < worksheet.getPhysicalNumberOfRows(); index++) {
             if (index > 0) {
-               
+              
+            	Persona persona = new Persona();
 
                 XSSFRow row = worksheet.getRow(index);
              
@@ -102,12 +104,13 @@ public class PersonaController {
                 persona.setNombre(row.getCell(1).getStringCellValue());
                 
                 personaService.guardar(persona);
-                
+                personaLista.add(persona);
             }
         }
 
-		model.addAttribute("mensaje","Datos de Importación de Personas Hechas");
-		return "/views/personas/import";
+		
+		model.addAttribute("mensaje","Datos de Importación de Personas Hechas "+personaLista);
+		return "redirect:/personas/";
 	}
 	
 	
